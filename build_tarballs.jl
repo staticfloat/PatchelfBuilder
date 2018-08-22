@@ -22,13 +22,11 @@ make install
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
-platforms = [
-    Linux(:x86_64, :glibc)
-]
+platforms = supported_platforms()
 
 # The products that we will ensure are always built
 products(prefix) = [
-    ExecutableProduct(prefix, "cmake", :cmake),
+    ExecutableProduct(prefix, "patchelf", :patchelf),
 ]
 
 # Dependencies that must be installed before this package can be built
@@ -36,5 +34,5 @@ dependencies = [
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
-build_tarballs(ARGS, "Patchelf", sources, script, platforms, products, dependencies)
+build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
 
